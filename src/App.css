@@ -1,38 +1,715 @@
 .App {
   text-align: center;
+  color: hsl(221, 54%, 51%);
+  font-size: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+/* Variables de color y estilo Haute Parfumerie */
+:root {
+  --bs-primary: #081534;
+  --bs-primary-rgb: 8, 21, 52;
+  --bs-secondary: #725b38;
+  --bs-secondary-rgb: 114, 91, 56;
+  --ne-gold: #c5a880;
+  --ne-gold-light: #fedeb2;
+  --ne-surface: #faf9f6;
+  --ne-surface-card: #ffffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  background-color: var(--ne-surface);
+  color: #1a1c1a;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
+h1,
+h2,
+h3,
+h4,
+h5,
+.serif-font {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Insignias doradas */
+.badge-gold {
+  background-color: var(--ne-gold-light) !important;
+  color: #584323 !important;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Tarjetas con efecto de cristal suave */
+.card-luxury {
+  border: 1px solid rgba(114, 91, 56, 0.1);
+  border-radius: 0.85rem;
+  background: var(--ne-surface-card);
+  box-shadow: 0 4px 20px -4px rgba(30, 42, 74, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card-luxury:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(30, 42, 74, 0.12);
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* Botón primario de lujo */
+.btn-primary {
+  background-color: #081534 !important;
+  border-color: #081534 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1e2a4a !important;
+  border-color: #1e2a4a !important;
+  box-shadow: 0 4px 14px rgba(8, 21, 52, 0.25) !important;
+}
+
+/* ==========================================================================
+   MODO OSCURO / MODO NOCTURNO
+   ========================================================================== */
+body.dark-mode,
+.dark-mode {
+  background-color: #0b0f19 !important;
+  color: #f2f1ee !important;
+}
+
+.dark-mode .navbar {
+  background-color: rgba(14, 19, 31, 0.96) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark-mode .card,
+.dark-mode .card-luxury {
+  background-color: #141b2a !important;
+  border-color: rgba(224, 194, 152, 0.15) !important;
+  color: #eeeef2 !important;
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark-mode .bg-light,
+.dark-mode .bg-white {
+  background-color: #182032 !important;
+  color: #f2f1ee !important;
+}
+
+.dark-mode .text-primary {
+  color: #f2f1ee !important;
+}
+
+.dark-mode .text-muted {
+  color: #9aa1b3 !important;
+}
+
+.dark-mode .btn-primary {
+  background-color: #e0c298 !important;
+  border-color: #e0c298 !important;
+  color: #0d121d !important;
+}
+
+.dark-mode .btn-primary:hover {
+  background-color: #fedeb2 !important;
+  box-shadow: 0 4px 18px rgba(224, 194, 152, 0.35) !important;
+}
+
+.dark-mode .badge-gold {
+  background-color: #382c1a !important;
+  color: #fedeb2 !important;
+  border: 1px solid rgba(224, 194, 152, 0.3) !important;
+}
+
+.dark-mode .table-light {
+  background-color: #182032 !important;
+  color: #f2f1ee !important;
+}
+
+.dark-mode table td {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+  --bs-primary: #081534;
+  --bs-primary-rgb: 8, 21, 52;
+  --bs-secondary: #725b38;
+  --bs-secondary-rgb: 114, 91, 56;
+  --bs-info: #525d80;
+  --bs-body-bg: #faf9f6;
+  --bs-body-color: #1a1c1a;
+  --bs-border-color: #e3e2e0;
+  --bs-border-color-translucent: rgba(114, 91, 56, 0.15);
+  --bs-font-sans-serif: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Luxury Palette tokens */
+  --ne-primary: #081534;
+  --ne-primary-container: #1e2a4a;
+  --ne-secondary: #725b38;
+  --ne-secondary-light: #fedeb2;
+  --ne-secondary-subtle: #fbf5ee;
+  --ne-gold: #c5a880;
+  --ne-surface: #faf9f6;
+  --ne-surface-low: #f4f3f1;
+  --ne-surface-lowest: #ffffff;
+  --ne-surface-high: #e9e8e5;
+  --ne-outline: #76777f;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--ne-surface);
+  color: #1a1c1a;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-playfair,
+.serif-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Custom Bootstrap Overrides for Haute Parfumerie aesthetic */
+.btn-primary {
+  background-color: var(--ne-primary) !important;
+  border-color: var(--ne-primary) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--ne-primary-container) !important;
+  border-color: var(--ne-primary-container) !important;
+  box-shadow: 0 4px 14px rgba(8, 21, 52, 0.25) !important;
+}
+
+.btn-secondary,
+.btn-gold {
+  background-color: var(--ne-secondary) !important;
+  border-color: var(--ne-secondary) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background-color: #5c482b !important;
+  border-color: #5c482b !important;
+}
+
+.btn-outline-primary {
+  color: var(--ne-primary) !important;
+  border-color: var(--ne-primary) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--ne-primary) !important;
+  color: #ffffff !important;
+}
+
+.btn-outline-secondary {
+  color: var(--ne-secondary) !important;
+  border-color: var(--ne-secondary) !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--ne-secondary) !important;
+  color: #ffffff !important;
+}
+
+.badge-gold {
+  background-color: #fedeb2;
+  color: #584323;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.badge-navy {
+  background-color: #1e2a4a;
+  color: #ffffff;
+}
+
+.card {
+  border: 1px solid rgba(114, 91, 56, 0.08);
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px -4px rgba(30, 42, 74, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(30, 42, 74, 0.12);
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.bg-glass-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Sidebar Styling in Bootstrap Style */
+.sidebar-wrapper {
+  width: 280px;
   min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1040;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Header & Main Content Responsive Layout */
+.header-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 76px;
+  z-index: 1030;
+  transition: left 0.3s ease;
+}
+
+.main-content {
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+@media (min-width: 992px) {
+  .header-bar {
+    left: 280px !important;
+    width: calc(100% - 280px) !important;
+  }
+
+  .main-content {
+    margin-left: 280px !important;
+    width: calc(100% - 280px) !important;
+    padding-top: 84px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .sidebar-wrapper {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sidebar-wrapper.show {
+    transform: translateX(0);
+  }
+
+  .header-bar {
+    left: 0 !important;
+    width: 100% !important;
+    height: 68px !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding-top: 72px !important;
+    padding-bottom: 80px !important;
+    overflow-x: hidden !important;
+  }
+}
+
+.nav-link-custom {
+  color: #45464e;
+  border-radius: 0.5rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  transition: all 0.2s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-link-custom:hover {
+  background-color: #f4f3f1;
+  color: #081534;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-link-custom.active {
+  background-color: #1e2a4a;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(30, 42, 74, 0.18);
+}
+
+.nav-link-custom.active .nav-icon {
+  color: #fedeb2;
+}
+
+/* Custom form elements */
+.form-control:focus,
+.form-select:focus {
+  border-color: #c5a880;
+  box-shadow: 0 0 0 0.25rem rgba(197, 168, 128, 0.2);
+}
+
+/* Custom table */
+.table-luxury th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #76777f;
+  background-color: #f4f3f1;
+  border: none;
+  padding: 0.85rem 1rem;
+}
+
+.table-luxury td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0eeea;
+  font-size: 0.875rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #faf9f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4cfc6;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #725b38;
+}
+
+/* ==========================================================================
+LUXURY DARK MODE THEME ('Modo Nocturno de Alta Perfumería')
+========================================================================== */
+.dark-mode {
+  --bs-body-bg: #0b0f19;
+  --bs-body-color: #f2f1ee;
+  --bs-border-color: rgba(224, 194, 152, 0.15);
+
+  --ne-primary: #dae2ff;
+  --ne-primary-container: #202b47;
+  --ne-secondary: #e0c298;
+  --ne-secondary-light: #382c1a;
+  --ne-secondary-subtle: #231c12;
+  --ne-gold: #e0c298;
+  --ne-surface: #0b0f19;
+  --ne-surface-low: #121826;
+  --ne-surface-lowest: #182032;
+  --ne-surface-high: #242e44;
+  --ne-outline: #8e95a5;
+
+  background-color: #0b0f19 !important;
+  color: #f2f1ee !important;
+}
+
+.dark-mode body {
+  background-color: #0b0f19 !important;
+  color: #f2f1ee !important;
+}
+
+.dark-mode .sidebar-wrapper {
+  background: rgba(14, 19, 31, 0.94) !important;
+  border-right-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark-mode .bg-glass {
+  background: rgba(14, 19, 31, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark-mode .card,
+.dark-mode .card-luxury {
+  background-color: #141b2a !important;
+  border-color: rgba(224, 194, 152, 0.12) !important;
+  color: #f2f1ee !important;
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.45) !important;
+}
+
+.dark-mode .card-hover:hover {
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.65) !important;
+  border-color: rgba(224, 194, 152, 0.28) !important;
+}
+
+.dark-mode .bg-light,
+.dark-mode .bg-white {
+  background-color: #182032 !important;
+  color: #f2f1ee !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark-mode .text-primary {
+  color: #f2f1ee !important;
+}
+
+.dark-mode .text-dark {
+  color: #f2f1ee !important;
+}
+
+.dark-mode .text-muted {
+  color: #9aa1b3 !important;
+}
+
+.dark-mode .text-secondary {
+  color: #e0c298 !important;
+}
+
+.dark-mode .btn-primary {
+  background-color: #e0c298 !important;
+  border-color: #e0c298 !important;
+  color: #0d121d !important;
+  font-weight: 700;
+}
+
+.dark-mode .btn-primary:hover,
+.dark-mode .btn-primary:focus {
+  background-color: #f2dab7 !important;
+  border-color: #f2dab7 !important;
+  box-shadow: 0 4px 18px rgba(224, 194, 152, 0.3) !important;
+}
+
+.dark-mode .btn-outline-primary {
+  color: #e0c298 !important;
+  border-color: #e0c298 !important;
+}
+
+.dark-mode .btn-outline-primary:hover {
+  background-color: #e0c298 !important;
+  color: #0d121d !important;
+}
+
+.dark-mode .btn-outline-secondary {
+  color: #c5a880 !important;
+  border-color: rgba(197, 168, 128, 0.35) !important;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+  background-color: rgba(197, 168, 128, 0.15) !important;
+  color: #fedeb2 !important;
+}
+
+.dark-mode .badge-gold {
+  background-color: #382c1a !important;
+  color: #fedeb2 !important;
+  border: 1px solid rgba(224, 194, 152, 0.35) !important;
+}
+
+.dark-mode .badge-navy {
+  background-color: #202b44 !important;
+  color: #dae2ff !important;
+  border: 1px solid rgba(218, 226, 255, 0.2) !important;
+}
+
+.dark-mode .nav-link-custom {
+  color: #9aa1b3;
+}
+
+.dark-mode .nav-link-custom:hover {
+  background-color: #1a2336;
+  color: #ffffff;
+}
+
+.dark-mode .nav-link-custom.active {
+  background-color: #202b44;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .nav-link-custom.active .nav-icon {
+  color: #e0c298;
+}
+
+.dark-mode .table-luxury th {
+  background-color: #182032 !important;
+  color: #c0c7d6 !important;
+}
+
+.dark-mode .table-luxury td {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+  color: #f2f1ee !important;
+}
+
+.dark-mode .form-control,
+.dark-mode .form-select {
+  background-color: #182032 !important;
+  color: #f2f1ee !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.dark-mode .form-control::placeholder {
+  color: #6c7385 !important;
+}
+
+.dark-mode .modal-content {
+  background-color: #141b2a !important;
+  color: #f2f1ee !important;
+  border: 1px solid rgba(224, 194, 152, 0.2) !important;
+}
+
+.dark-mode .modal-body {
+  background-color: #0f1522 !important;
+}
+
+.dark-mode .modal-footer {
+  background-color: #141b2a !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark-mode footer {
+  background-color: #101624 !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  color: #9aa1b3 !important;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #e0c298;
+}
+
+/* ==============================================================
+MOBILE ULTRA-RESPONSIVE FIXES (PREVIENE CORTES EN CELULARES)
+============================================================== */
+
+/* Prevenir desbordamiento horizontal global */
+html,
+body {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* Tipografía fluida en móviles */
+@media (max-width: 575.98px) {
+  .display-4 {
+    font-size: 1.85rem !important;
   }
-  to {
-    transform: rotate(360deg);
+
+  .display-5 {
+    font-size: 1.6rem !important;
   }
+
+  .display-6 {
+    font-size: 1.35rem !important;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.35rem !important;
+  }
+
+  h3 {
+    font-size: 1.2rem !important;
+  }
+
+  h4 {
+    font-size: 1.05rem !important;
+  }
+
+  /* Reducir padding en contenedores para ganar espacio lateral */
+  .container-fluid {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Ajuste de tarjetas y textos largos */
+  .card,
+  .luxury-card,
+  .frosted-glass-card {
+    max-width: 100% !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Botones más amigables al tacto */
+  .btn {
+    white-space: normal !important;
+    word-break: break-word;
+  }
+
+  /* Evitar corte de la barra de ocasiones */
+  .occasion-scroll-wrapper {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Ocultar barra de desplazamiento sin romper el swipe */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
